@@ -11,6 +11,12 @@ def avaialibility_handler(pincode):
     URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={}&date={}".format(
         POST_CODE, date_str)
 
+
+    proxy = {
+    "https": 'https://116.203.190.255',
+    "http": 'https://116.73.14.16'
+}
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8',
@@ -19,7 +25,7 @@ def avaialibility_handler(pincode):
         'Accept-Language': 'en-US,en;q=0.8',
         'Connection': 'keep-alive'}
     not_json = False
-    response = requests.get(URL, headers=headers)
+    response = requests.get(URL, headers=headers, proxies=[roxy])
     try:
         data = json.loads(response.text)
     except:
