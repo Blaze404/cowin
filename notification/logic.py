@@ -25,7 +25,7 @@ def avaialibility_handler(pincode):
         'Accept-Language': 'en-US,en;q=0.8',
         'Connection': 'keep-alive'}
     not_json = False
-    response = requests.get(URL, headers=headers, proxies=[roxy])
+    response = requests.get(URL, headers=headers, proxies=proxy)
     try:
         data = json.loads(response.text)
     except:
