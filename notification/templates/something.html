@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Show Vaccines</title>
+
+    {% load static %}
+    <link rel="apple-touch-icon" sizes="57x57" href="{%static 'icon/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{%static 'icon/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{%static 'icon/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{%static 'icon/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{%static 'icon/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{%static 'icon/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{%static 'icon/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{%static 'icon/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static 'icon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{%static 'icon/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'icon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{%static 'icon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'icon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{%static 'icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{%static 'icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+
+
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'something.css' %}">
+
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4 available-box {% if avail_color == 2 %}available-green {% elif avail_color == 1 %}alert-orange {% elif avail_color == 0 %}unavailable-red{% endif %}">
+                    {% if avail_color == 2 %}
+                    <i class="fas fa-thumbs-up available-green"></i>
+                     {% elif avail_color == 1 %}
+                     <i class="fas fa-clock alert-orange"></i>
+                     {% elif avail_color == 0 %}
+                     <i class="fas fa-exclamation-triangle unavailable-red"></i>
+                     {% endif %}
+                Total Available: {{total_available}}
+            </div>
+        </div>
+    </div>
+
+    {% if total_available >= 0 %}
+    <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-4">
+
+                    <button  type="button"  class="btn btn-primary"  id="c-btn" >Notify me!</button>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+
+    <div class="container center-text main-area">
+        <div class="row">
+            <div class="col-md-12 text-info">
+                Oops!! Looks like we didnt recieve any data from Cowin Servers. <br>
+                Please try again now or sometime later. <br>
+                You can Still select to notify and we will notify you when the vaccine is available in your area
+            </div>
+        </div>
+    </div>
+
+
+    <div id="contact">
+            <form method="POST" action="/saveNotify/">
+                <label>
+
+                  <input id="fname" name="name" type="text" placeholder="Youe Name">
+                  <span>Your Name</span>
+                </label>
+
+                <label>
+
+                    <input id="femail" name="email" type="text" placeholder="Email">
+                    <span>Your Email</span>
+                </label>
+
+                <label>
+
+                        <input id="fage" name="age" type="text" placeholder="Age">
+                        <span>Your Age</span>
+                    </label>
+                    <input type="hidden" name="pincode" type="text" value="{{pincode}}">
+                    <input type="hidden" name="notify_type" type="text" value="PUA">
+
+               {% csrf_token %}
+                <input type="submit" value="Send">
+              </form>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/8d26d665dc.js" crossorigin="anonymous"></script>
+    <script src="{% static 'availability.js' %}"></script>
+
+
+    <script>
+        $(function() {
+            $('input').on('change', function() {
+            var input = $(this);
+            if (input.val().length) {
+                input.addClass('populated');
+            } else {
+                input.removeClass('populated');
+            }
+            });
+
+            setTimeout(function() {
+            $('#fname').trigger('focus');
+            }, 500);
+        });
+
+
+
+    </script>
+    {% if save_process %}
+        {% if save_success %}
+        <script>
+            toastr.success('Success!', 'You will be notified once slots are available!');
+        </script>
+        {% else %}
+        <script>
+            toastr.success('Something went wrong :(', 'Please try again.');
+        </script>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

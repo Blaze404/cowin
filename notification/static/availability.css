@@ -1,0 +1,177 @@
+
+.center-text{
+    text-align: center;
+}
+
+.sub-header{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.one-center{
+    border: 1px solid salmon;
+   padding: 1%;
+   margin-top: 2%;
+}
+
+.session{
+    border: 1px solid salmon;
+    padding: 1%;
+}
+.available-green {
+    color: #4cbb17;
+    font-size: 1.1em;
+}
+.unavailable-red{
+    color: #e32636;
+    font-size: 1.1em;
+}
+.alert-orange{
+    color: #EC5800;
+    font-size: 1.1em;
+}
+
+.available-box{
+    font-size: 2em;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+body {font-family: 'Source Sans Pro', sans-serif; background: #ffde66;}
+
+
+
+
+#contact {
+    background: #fff;
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,.1)
+}
+
+.js #contact {
+    position: absolute;
+    top: 3em;
+    display: none;
+    left:0; right:0;
+}
+
+input {
+    border: 0;
+    margin: 1em 40px;
+    width: 300px;
+    padding: 10px;
+    border-bottom: 2px solid #3333ff;
+
+    color: #3333ff;
+}
+
+
+#submit {
+  margin: 3em auto 4em;
+
+}
+#submit:hover {color: #fff}
+
+.btn{
+    background: none;
+    border: 2px solid #252525;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+
+    padding: 1.2em 2em;
+    color: #212121;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: ease all .3s;
+    display: block;
+}
+
+.btn:hover{background: #3333ff; color: #fff; border: #3333ff solid 2px;}
+.btn:active{background: #3333aa; color: #fff; border: #3333aa solid 2px;}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: -10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 3em;
+    color: #551a8b;
+}
+
+
+form label {
+    position: relative;
+    display: block;
+  }
+  form label input {
+    font: 18px Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    border: none;
+    padding: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  form label input::-moz-placeholder {
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #999;
+    font: 18px Helvetica, Arial, sans-serif;
+  }
+  form label input:-ms-input-placeholder {
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #999;
+    font: 18px Helvetica, Arial, sans-serif;
+  }
+  form label input::placeholder {
+    transition: all 0.2s ease-in-out;
+    color: #999;
+    font: 18px Helvetica, Arial, sans-serif;
+  }
+  form label input:focus, form label input.populated {
+    padding-top: 28px;
+    padding-bottom: 12px;
+  }
+  form label input:focus::-moz-placeholder, form label input.populated::-moz-placeholder {
+    color: transparent;
+  }
+  form label input:focus:-ms-input-placeholder, form label input.populated:-ms-input-placeholder {
+    color: transparent;
+  }
+  form label input:focus::placeholder, form label input.populated::placeholder {
+    color: transparent;
+  }
+  form label input:focus + span, form label input.populated + span {
+    opacity: 1;
+    top: 10px;
+  }
+  form label span {
+    color: #551a8b;
+    font: 13px Helvetica, Arial, sans-serif;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }
+  form input[type=submit] {
+    transition: all 0.2s ease-in-out;
+    font: 18px Helvetica, Arial, sans-serif;
+    border: none;
+    background: #551a8b;
+    color: #fff;
+    padding: 16px 40px;
+  }
+  form input[type=submit]:hover {
+    background: #551a8b;
+  }
