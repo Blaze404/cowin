@@ -15,6 +15,25 @@ def index(request):
         }
         return JsonResponse(context)
 
+def index_marathi(request):
+    if request.method == 'GET':
+        return render(request, 'index_m.html', {})
+    else:
+        context = {
+            "success": False,
+            "message": request.method + " not supported, please send GET request"
+        }
+        return JsonResponse(context)
+
+def index_hindi(request):
+    if request.method == 'GET':
+        return render(request, 'index_h.html', {})
+    else:
+        context = {
+            "success": False,
+            "message": request.method + " not supported, please send GET request"
+        }
+        return JsonResponse(context)
 
 def get_vaccine(request):
     if request.method == 'POST':
@@ -27,6 +46,32 @@ def get_vaccine(request):
     else:
         data = logic.avaialibility_handler("110001")
         return render(request, 'show_vaccines.html', data)
+
+
+def get_vaccine_marathi(request):
+    if request.method == 'POST':
+        pincode = request.POST.get('pincode', '')
+        context = logic.avaialibility_handler(pincode)
+        if context['success']:
+            return render(request, 'show_vaccines_m.html', context)
+        else:
+            return render(request, 'something_m.html', context)
+    else:
+        data = logic.avaialibility_handler("110001")
+        return render(request, 'show_vaccines_m.html', data)
+    
+def get_vaccine_hindi(request):
+    if request.method == 'POST':
+        pincode = request.POST.get('pincode', '')
+        context = logic.avaialibility_handler(pincode)
+        if context['success']:
+            return render(request, 'show_vaccines_h.html', context)
+        else:
+            return render(request, 'something_h.html', context)
+    else:
+        data = logic.avaialibility_handler("110001")
+        return render(request, 'show_vaccines_h.html', data)
+
 
 def update_notification(request):
     if request.method == 'POST':

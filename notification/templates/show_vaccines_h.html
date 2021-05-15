@@ -54,7 +54,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
-        <link rel="stylesheet" href="{% static 'availability.css' %}">
+        <link rel="stylesheet" href="{% static 'availability_m.css' %}">
         
 
 </head>
@@ -73,7 +73,7 @@
                      {% elif avail_color == 0 %}
                      <i class="fas fa-exclamation-triangle unavailable-red"></i>
                      {% endif %}
-                Total Available: {{total_available}}
+                     कुल उपलब्ध: {{total_available}}
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-4">
                         
-                    <button  type="button"  class="btn btn-primary"  id="c-btn" >Notify me!</button>
+                    <button  type="button"  class="btn btn-primary"  id="c-btn" >सूचित करें!</button>
                 </div>
             </div>
         </div>
@@ -110,8 +110,8 @@
                                       <table class="table table-nowrap">
                                         <thead class="thead-light">
                                           <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Value</th>
+                                            <th scope="col">नाम</th>
+                                            <th scope="col">{{center.name}}</th>
                                            
                                           </tr>
                                         </thead>
@@ -120,7 +120,7 @@
                                             <td data-label="Name">
                                              
                                               <a class="text-heading font-semibold" href="#">
-                                                    Address
+                                                पता 
                                               </a>
                                             </td>
                                             <td data-label="Value">
@@ -132,7 +132,7 @@
                                             <td data-label="Name">
                                             
                                               <a class="text-heading font-semibold" href="#">
-                                                    District
+                                                जिल्हा
                                               </a>
                                             </td>
                                             <td data-label="Value">
@@ -145,7 +145,8 @@
                                             <td data-label="Name">
                                              
                                               <a class="text-heading font-semibold" href="#">
-                                                    Block Name
+                                                ब्लॉक का नाम 
+
                                               </a>
                                             </td>
                                             <td data-label="Value">
@@ -156,7 +157,7 @@
                                           <tr>
                                             <td data-label="Name">
                                               <a class="text-heading font-semibold" href="#">
-                                                    Pincode
+                                                पिन कोड
                                               </a>
                                             </td>
                                             <td data-label="Value">
@@ -168,7 +169,7 @@
                                           <tr>
                                             <td data-label="Name">
                                               <a class="text-heading font-semibold" href="#">
-                                                    Start time
+                                                खुलने का समय 
                                               </a>
                                             </td>
                                             <td data-label="Value">
@@ -180,7 +181,7 @@
                                           <tr>
                                                 <td data-label="Name">
                                                   <a class="text-heading font-semibold" href="#">
-                                                        Start time:
+                                                    बंद होने का समय 
                                                   </a>
                                                 </td>
                                                 <td data-label="Value">
@@ -201,7 +202,7 @@
               
             </div>
             <div class="col-md-12 center-text">
-                <h3>Availability</h3>
+                <h3>उपलब्धता</h3>
             </div>
             {% for session in center.sessions %}
                 <div class="col-md-4 session">
@@ -209,7 +210,7 @@
                         <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">तारीख</th>
                                     <th scope="col">{{session.date}}</th>
                 
                                   </tr>
@@ -224,22 +225,22 @@
                                                  {% elif session.available_capacity <= 0 %}
                                                  <i class="fas fa-exclamation-triangle unavailable-red"></i>
                                                  {% endif %} </span>
-                                        Capacity</th>
+                                                 क्षमता</th>
                                     <td>{{session.available_capacity}}</td>
                 
                                   </tr>
                                   <tr>
-                                    <th scope="row">Age limit</th>
+                                    <th scope="row">कम आयु सीमा</th>
                                     <td>{{session.min_age_limit}} </td>
                 
                                   </tr>
                                   <tr>
-                                    <th scope="row">Vaccine</th>
+                                    <th scope="row">कौनसी वैक्सीन</th>
                                     <td>{{session.vaccine}}</td>
                 
                                   </tr>
                                   <tr>
-                                        <th scope="row">Slots</th>
+                                        <th scope="row">समय  स्लॉट</th>
                                         <td> <ul>
                                                 {% for slot in session.slots %}
                                                     <li>{{slot}}</li>
@@ -264,26 +265,26 @@
             <form method="POST" action="/saveNotify/">
                 <label>
                   
-                  <input id="fname" name="name" type="text" placeholder="Your Name">
-                  <span>Your Name</span>
+                  <input id="fname" name="name" type="text" placeholder="आपका नाम">
+                  <span>आपका नाम</span>
                 </label>
 
                 <label>
                   
-                    <input id="femail" name="email" type="text" placeholder="Email">
-                    <span>Your Email</span>
+                    <input id="femail" name="email" type="text" placeholder="ई - मेल">
+                    <span>आपका ई - मेल</span>
                 </label>
 
                 <label>
                   
-                        <input id="fage" name="age" type="text" placeholder="Age">
-                        <span>Your Age</span>
+                        <input id="fage" name="age" type="text" placeholder="उम्र">
+                        <span>आपकी उम्र</span>
                     </label>
                     <input type="hidden" name="pincode" type="text" value="{{pincode}}">
                     <input type="hidden" name="notify_type" type="text" value="GEN">
                     
                {% csrf_token %}
-                <input type="submit" value="Send">
+                <input type="submit" value="मुझे सूचित करें!">
               </form>
     </div>
     
@@ -314,11 +315,11 @@
     {% if save_process %}
         {% if save_success %}
         <script>
-            toastr.success('Success!', 'You will be notified once slots are available!');
+            toastr.success('Okay!', 'जैसे ही आपका स्लॉट उपलब्ध होता है हम आपको ईमेल करेंगे !');
         </script>
         {% else %}
         <script>
-            toastr.success('Something went wrong :(', 'Please try again.');
+            toastr.success('कुछ गलत हो गया है  :(', 'कृपया फिरसे प्रयास करे.');
         </script>
         {% endif %}
     {% endif %}

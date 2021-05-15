@@ -59,7 +59,7 @@
                      {% elif avail_color == 0 %}
                      <i class="fas fa-exclamation-triangle unavailable-red"></i>
                      {% endif %}
-                Total Available: {{total_available}}
+                     एकूण उपलब्ध: {{total_available}}
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-4">
 
-                    <button  type="button"  class="btn btn-primary"  id="c-btn" >Notify me!</button>
+                    <button  type="button"  class="btn btn-primary"  id="c-btn" >सूचित करा!</button>
                 </div>
             </div>
         </div>
@@ -82,40 +82,40 @@
     <div class="container center-text main-area">
         <div class="row">
             <div class="col-md-12 text-info">
-                Oops!! ऐसा लगता है कि हमें Cowin सर्वर से कोई डेटा प्राप्त नहीं हुआ है। <br>
-                कृपया अभी या कुछ समय बाद पुन: प्रयास करें. <br>  
-                आप अभी भी सूचित करना चुन सकते हैं और आपके क्षेत्र में वैक्सीन उपलब्ध होने पर हम आपको सूचित करेंगे
+                उप्स !! असे दिसते आहे की आम्ही कोविन सर्व्हरकडील (Server) कोणताही डेटा प्राप्त केला नाही. <br>
+                कृपया आता किंवा नंतर पुन्हा प्रयत्न करा. <br>
+                आपण अद्याप सूचित करण्यासाठी निवडू शकता आणि जेव्हा आपल्या भागात लस उपलब्ध असेल तेव्हा आम्ही आपल्याला सूचित करू.
             </div>
         </div>
     </div>
 
 
     <div id="contact">
-            <form method="POST" action="/saveNotify/">
-                <label>
+        <form method="POST" action="/saveNotify/">
+            <label>
+              
+              <input id="fname" name="name" type="text" placeholder="आपले नाव">
+              <span>आपले नाव</span>
+            </label>
 
-                  <input id="fname" name="name" type="text" placeholder="Youe Name">
-                  <span>Your Name</span>
+            <label>
+              
+                <input id="femail" name="email" type="text" placeholder="ई - मेल">
+                <span>आपला ई - मेल</span>
+            </label>
+
+            <label>
+              
+                    <input id="fage" name="age" type="text" placeholder="वय ">
+                    <span>आपली वय </span>
                 </label>
-
-                <label>
-
-                    <input id="femail" name="email" type="text" placeholder="Email">
-                    <span>Your Email</span>
-                </label>
-
-                <label>
-
-                        <input id="fage" name="age" type="text" placeholder="Age">
-                        <span>Your Age</span>
-                    </label>
-                    <input type="hidden" name="pincode" type="text" value="{{pincode}}">
-                    <input type="hidden" name="notify_type" type="text" value="PUA">
-
-               {% csrf_token %}
-                <input type="submit" value="Send">
-              </form>
-    </div>
+                <input type="hidden" name="pincode" type="text" value="{{pincode}}">
+                <input type="hidden" name="notify_type" type="text" value="GEN">
+                
+           {% csrf_token %}
+            <input type="submit" value="सूचित करा!">
+          </form>
+    </div>  
 
 
     <script src="https://kit.fontawesome.com/8d26d665dc.js" crossorigin="anonymous"></script>
@@ -144,11 +144,11 @@
     {% if save_process %}
         {% if save_success %}
         <script>
-            toastr.success('Success!', 'You will be notified once slots are available!');
+            toastr.success('Okay!', 'एकदा आपल्या स्लॉट उपलब्ध झाल्यावर आपल्यास सूचित केले जाईल!');
         </script>
         {% else %}
         <script>
-            toastr.success('Something went wrong :(', 'Please try again.');
+            toastr.success('काहीतरी चूक झाली :(', 'कृपया पुन्हा प्रयत्न करा.');
         </script>
         {% endif %}
     {% endif %}

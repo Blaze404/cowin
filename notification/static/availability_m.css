@@ -1,5 +1,5 @@
 /* @import url(https://unpkg.com/@webpixels/css@1.0/dist/index.css); */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
 
 .center-text{
     text-align: center;
@@ -49,7 +49,7 @@
     margin-top: 5%;
 }
 
-body {font-family: 'Nunito Sans', sans-serif; background: #b666d2;}
+body {font-family: 'Noto Sans', sans-serif; background: #b666d2;}
 
 
 

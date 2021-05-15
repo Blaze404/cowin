@@ -62,22 +62,22 @@
 
 </head>
 <body>
-  <h1>Check for Vaccine</h1>
+  <h1>वैक्सीन उपलब्धता</h1>
 
-  <form method="POST" action="/getVaccine/">
+  <form method="POST" action="/m/getVaccine/">
     <label>
       
-      <input required id="fname" name="pincode" type="text" placeholder="Pincode">
-      <span>Your Area's Pincode</span>
+      <input required id="fname" name="pincode" type="text" placeholder="पिन कोड">
+      <span>आपल्या क्षेत्राचा पिन कोड</span>
     </label>
    {% csrf_token %}
-    <input type="submit" value="Send">
+    <input type="submit" value="Okay">
   </form>
 
   
 <div id="dialog" title="Please choose language">
-      <a id="enlgish" class="btn btn-primary" href="#" > Continue in English </a> <br> <br>
-      <a href="/m" class="btn btn-primary" >मराठी</a> &nbsp;&nbsp;&nbsp;
+      <a id="enlgish" class="btn btn-primary" href="#" > मराठीत ठेवा </a> <br> <br>
+      <a href="/" class="btn btn-primary" >English</a> &nbsp;&nbsp;&nbsp;
       <a href="/h" class="btn btn-primary">हिंदी </a> <br>
   </div>
   <script>
