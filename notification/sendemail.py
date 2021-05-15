@@ -35,8 +35,8 @@ def send_initial_email(name, email, pincode):
     Subject: Alert for availability of Vaccine.
 
     Hi {}. 
-    Thank You for registering To coviw notifications.
-    Your registered pincode is: {}. Is this pincode is incorrect, kindly register again.
+    Thank You for registering To covin notifications.
+    Your registered pincode is: {}. If this pincode is incorrect, kindly register again.
     Your further notifications will come via this email only, so if its somehow going into spam,
     please mark it as not.
     
