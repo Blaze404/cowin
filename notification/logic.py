@@ -73,7 +73,7 @@ def save_to_notify(request):
     user.notify_type = notify_type
     user.notified = 0
 
-    send_initial_email(email, name, pincode)
+    send_initial_email(name, email, pincode)
 
     try:
         user.save()
