@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from . import logic as logic
 from . import task
+import datetime
 
 # Create your views here.
 def index(request):
@@ -69,5 +70,6 @@ def show_all(request):
         return JsonResponse(context)
 
 def ping(request):
+    print('ping: ', datetime.datetime.now())
     task.handle_all(request)
     return JsonResponse({'hello': 'world'})
