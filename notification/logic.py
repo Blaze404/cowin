@@ -2,6 +2,7 @@ import datetime
 import requests
 import json
 from .models import User
+from .sendemail import send_initial_email
 
 def avaialibility_handler(pincode):
     POST_CODE = pincode
@@ -71,6 +72,8 @@ def save_to_notify(request):
     user.pincode = pincode
     user.notify_type = notify_type
     user.notified = 0
+
+    send_initial_email(email, name, pincode)
 
     try:
         user.save()

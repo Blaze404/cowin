@@ -97,39 +97,159 @@
     <div class="container one-center">
         <div class="row">
             <div class="col-md-12">
-                <h3> <span class="sub-header">Name:</span>  {{center.name}} <br></h3>
-                <span class="sub-header"> Address: </span>  {{center.address}} <br>
-                <span class="sub-header"> District: </span> {{center.district_name}} <br>
-                <span class="sub-header"> Block Name: </span> {{center.block_name}} <br>
-                
-                <span class="sub-header"> Pincode: </span> {{center.pincode}} <br>
-                <span class="sub-header"> Start time:  </span> {{center.from}} <br>
-                <span class="sub-header"> End Time: </span> {{center.to}} <br> 
+
+                    <div class="p-10 bg-surface-secondary">
+                            <div class="container">
+                             
+                              <div class="card">
+                                    <div class="card-header">
+                                      <h6>{{center.name}}</h6>
+                              
+                                    </div>
+                                    <div class="table-responsive header-table">
+                                      <table class="table table-nowrap">
+                                        <thead class="thead-light">
+                                          <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Value</th>
+                                           
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr class="header-table">
+                                            <td data-label="Name">
+                                             
+                                              <a class="text-heading font-semibold" href="#">
+                                                    Address
+                                              </a>
+                                            </td>
+                                            <td data-label="Value">
+                                              <span>{{center.address}}</span>
+                                            </td>
+                                          
+                                          </tr>
+                                          <tr>
+                                            <td data-label="Name">
+                                            
+                                              <a class="text-heading font-semibold" href="#">
+                                                    District
+                                              </a>
+                                            </td>
+                                            <td data-label="Value">
+                                              <span>{{center.district_name}} </span>
+                                            </td>
+                                           
+                                            
+                                          </tr>
+                                          <tr>
+                                            <td data-label="Name">
+                                             
+                                              <a class="text-heading font-semibold" href="#">
+                                                    Block Name
+                                              </a>
+                                            </td>
+                                            <td data-label="Value">
+                                              <span>{{center.block_name}}</span>
+                                            </td>
+                                                 
+                                          </tr>
+                                          <tr>
+                                            <td data-label="Name">
+                                              <a class="text-heading font-semibold" href="#">
+                                                    Pincode
+                                              </a>
+                                            </td>
+                                            <td data-label="Value">
+                                              <span>{{center.pincode}} </span>
+                                            </td>
+                                            
+                                            
+                                          </tr>
+                                          <tr>
+                                            <td data-label="Name">
+                                              <a class="text-heading font-semibold" href="#">
+                                                    Start time
+                                              </a>
+                                            </td>
+                                            <td data-label="Value">
+                                              <span>{{center.from}}</span>
+                                            </td>
+                                            
+                                           
+                                          </tr>
+                                          <tr>
+                                                <td data-label="Name">
+                                                  <a class="text-heading font-semibold" href="#">
+                                                        Start time:
+                                                  </a>
+                                                </td>
+                                                <td data-label="Value">
+                                                  <span>{{center.to}}</span>
+                                                </td>
+                                                
+                                               
+                                              </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                            </div>
+                            </div>
+                          </div>
+
+                    
+
+              
             </div>
             <div class="col-md-12 center-text">
                 <h3>Availability</h3>
             </div>
             {% for session in center.sessions %}
                 <div class="col-md-4 session">
-                    Date: {{session.date}} <br>
-                    <span class="{% if session.available_capacity > 0 %}available-green {% elif session.available_capacity <= 0 %}unavailable-red{% endif %}" > 
+                    
+                        <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">{{session.date}}</th>
+                
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">
+                                            <span class="{% if session.available_capacity > 0 %}available-green {% elif session.available_capacity <= 0 %}unavailable-red{% endif %}" > 
                         
-                        {% if session.available_capacity > 0 %}
-                        <i class="fas fa-thumbs-up available-green"></i>
-                         {% elif session.available_capacity <= 0 %}
-                         <i class="fas fa-exclamation-triangle unavailable-red"></i>
-                         {% endif %}
-                        
-                        
-                        Capacity: {{session.available_capacity}} <br>
-                        </span>
-                    Age limit: {{session.min_age_limit}} <br>
-                    Vaccine: {{session.vaccine}} <br>
-                    Slots: <ul>
-                            {% for slot in session.slots %}
-                                <li>{{slot}}</li>
-                            {% endfor %}
-                        </ul> <br>
+                                                {% if session.available_capacity > 0 %}
+                                                <i class="fas fa-thumbs-up available-green"></i>
+                                                 {% elif session.available_capacity <= 0 %}
+                                                 <i class="fas fa-exclamation-triangle unavailable-red"></i>
+                                                 {% endif %} </span>
+                                        Capacity</th>
+                                    <td>{{session.available_capacity}}</td>
+                
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Age limit</th>
+                                    <td>{{session.min_age_limit}} </td>
+                
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Vaccine</th>
+                                    <td>{{session.vaccine}}</td>
+                
+                                  </tr>
+                                  <tr>
+                                        <th scope="row">Slots</th>
+                                        <td> <ul>
+                                                {% for slot in session.slots %}
+                                                    <li>{{slot}}</li>
+                                                {% endfor %}
+                                            </ul> </td>
+                    
+                                      </tr>
+                                </tbody>
+                              </table>
+
                 </div>
             {% endfor %}
           

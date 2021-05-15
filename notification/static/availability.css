@@ -1,22 +1,28 @@
-
+/* @import url(https://unpkg.com/@webpixels/css@1.0/dist/index.css); */
 .center-text{
     text-align: center;
 }
 
 .sub-header{
-    font-size: 1.2em;
+  font: 1.2em Helvetica, Arial, sans-serif;
+
     font-weight: 600;
+    text-transform: uppercase;
+    color: wheat;
 }
 
 .one-center{
-    border: 1px solid salmon;
-   padding: 1%;
+    border: 1px solid whitesmoke;
+   /* padding: 1%; */
    margin-top: 2%;
+   color: whitesmoke;
+   font: 1.1em Helvetica, Arial, sans-serif;
 }
 
 .session{
     border: 1px solid salmon;
     padding: 1%;
+    font-size: 1.1em;
 }
 .available-green {
     color: #4cbb17;
@@ -37,7 +43,7 @@
     margin-top: 5%;
 }
 
-body {font-family: 'Source Sans Pro', sans-serif; background: #ffde66;}
+body {font-family: 'Source Sans Pro', sans-serif; background: #b666d2;}
 
 
 
@@ -62,9 +68,9 @@ input {
     margin: 1em 40px;
     width: 300px;
     padding: 10px;
-    border-bottom: 2px solid #3333ff;
+    border-bottom: 2px solid #b666d2;
 
-    color: #3333ff;
+    color: #b666d2;
 }
 
 
@@ -174,4 +180,31 @@ form label {
   }
   form input[type=submit]:hover {
     background: #551a8b;
+  }
+
+  /* .header-table{
+    font-size: 1.2em !important;
+  }
+  .table td{
+    font-size: 1.1em;
+  } */
+  h6, .h6{
+    font-size: 1.4em;
+  } 
+
+  .table-hover>tbody>tr:hover{
+    color: black;
+  }
+  
+ 
+
+  .text-heading{
+    color: whitesmoke;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .text-heading:hover(){
+    color: whitesmoke;
+    text-decoration: none;
+    text-transform: uppercase;
   }
