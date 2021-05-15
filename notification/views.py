@@ -91,6 +91,43 @@ def update_notification(request):
         }
         return JsonResponse(context)
 
+def update_notification_marathi(request):
+    if request.method == 'POST':
+        save_success = logic.save_to_notify(request)
+        pincode = request.POST.get('pincode', '')
+        context = logic.avaialibility_handler(pincode)
+        context['save_success'] = save_success
+        context['save_process'] = True
+        if context['success']:
+            return render(request, 'show_vaccines_m.html', context)
+        else:
+            return render(request, 'something_m.html', context)
+    else:
+        context = {
+            "success": False,
+            "message": request.method + " not supported, please send POST request"
+        }
+        return JsonResponse(context)
+
+
+def update_notification_hindi(request):
+    if request.method == 'POST':
+        save_success = logic.save_to_notify(request)
+        pincode = request.POST.get('pincode', '')
+        context = logic.avaialibility_handler(pincode)
+        context['save_success'] = save_success
+        context['save_process'] = True
+        if context['success']:
+            return render(request, 'show_vaccines_h.html', context)
+        else:
+            return render(request, 'something_h.html', context)
+    else:
+        context = {
+            "success": False,
+            "message": request.method + " not supported, please send POST request"
+        }
+        return JsonResponse(context)
+
 def not_available(request):
     if request.method == 'POST':
         pincode = request.POST.get('pincode', '')
