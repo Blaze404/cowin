@@ -12,10 +12,6 @@ def avaialibility_handler(pincode):
         POST_CODE, date_str)
 
 
-    proxy = {
-    "https": 'https://116.203.190.255',
-    "http": 'https://116.73.14.16'
-}
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -25,7 +21,7 @@ def avaialibility_handler(pincode):
         'Accept-Language': 'en-US,en;q=0.8',
         'Connection': 'keep-alive'}
     not_json = False
-    response = requests.get(URL, headers=headers, proxies=proxy)
+    response = requests.get(URL, headers=headers)
     try:
         data = json.loads(response.text)
     except:
