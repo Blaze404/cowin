@@ -10,7 +10,7 @@ def send_email(name, email, pincode):
     Subject: Alert for availability of Vaccine.
 
     Hi {}. 
-    This email is to inform you that vaccines are not available
+    This email is to inform you that vaccines are now available
     in the pincode you provided: {}. Please be quick to register.
     
     Stay Safe. Stay Healthy 
