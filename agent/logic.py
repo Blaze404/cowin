@@ -95,6 +95,7 @@ def get_last_transactions():
     ## give padding to amounts
     max_length = 0
     for l in linechart.values():
+        print('l is ', l)
         if len(l.amounts) > max_length:
             max_length = len(l.amounts)
 
