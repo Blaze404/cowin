@@ -86,7 +86,7 @@ def get_last_transactions():
         for transaction in transactions:
             amounts.append(transaction.agent_current_value)
         amounts.reverse()
-        linechart[agent.agent_name] = json.dumps(amounts)
+        linechart[agent.agent_name] = amounts
 
     ## give padding to amounts
     max_length = 0
