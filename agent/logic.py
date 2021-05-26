@@ -69,9 +69,16 @@ def get_last_transactions():
     agents = Agent.objects.all()
 
     context = {}
-
+    linechart = {}
+    current_data = {}
     for agent in agents:
         # name = agent[0]
+        ## add current data
+        current_data[agent.agent_name] = {
+            'initial_value': agent.agent_investment,
+            'current_value': agent.agent_current_value,
+            'difference': agent.agent_current_value - agent.agent_investment
+        }
         transactions = Transactions.objects.filter(agent_name=agent.agent_name).order_by('-timestamp')
         if len(transactions) > LAST_N:
             transactions = transactions[:LAST_N]
@@ -79,20 +86,26 @@ def get_last_transactions():
         for transaction in transactions:
             amounts.append(transaction.agent_current_value)
         amounts.reverse()
-        context[agent.agent_name] = amounts
+        linechart[agent.agent_name] = amounts
 
     ## give padding to amounts
     max_length = 0
-    for l in context.values():
+    for l in linechart.values():
         if len(l) > max_length:
             max_length = len(l)
 
-    for agent in context:
-        if len(context[agent]) < max_length:
-            padding_length = max_length - len(context[agent])
+    for agent in linechart:
+        if len(linechart[agent]) < max_length:
+            padding_length = max_length - len(linechart[agent])
             temp = [0] * padding_length
-            temp.extend(context[agent])
-            context[agent] = temp
+            temp.extend(linechart[agent])
+            linechart[agent] = temp
+
+    # print(linechart)
+
+    context['linechart'] = linechart
+    context['current'] = current_data
 
     print(context)
+
     return context

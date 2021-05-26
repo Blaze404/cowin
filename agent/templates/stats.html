@@ -47,6 +47,9 @@
     <div id="cards_landscape_wrap-2">
             <div class="container">
                 <div class="row">
+
+                    {% for key, value in current.items %}
+
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <a href="">
                             <div class="card-flyer">
@@ -55,17 +58,23 @@
                                         <!-- <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" /> -->
                                     </div>
                                     <div class="text-container">
-                                        <h6>Agent 01</h6>
-                                        <p>Invested Money: 5$</p>
-                                        <p>Current Money: 5.1$</p>
-                                        <p class="change"><i class="fas fa-arrow-down fa-2x red"></i> 0.1$</p>
-                                        <p class="change"><i class="fas fa-equals fa-2x blue"></i> 0.1$</p>
-                                        
+                                        <h6>{{key}}</h6>
+                                        <p>Invested Money: {{value.initial_value}}$</p>
+                                        <p>Current Money: {{current_value.current_value}}$</p>
+                                        {% if value.difference > 0 %}
+                                            <p class="change"><i class="fas fa-arrow-up fa-2x green"></i> {{value.difference}}$</p>
+                                        {% elif value.difference < 0 %}
+                                            <p class="change"><i class="fas fa-arrow-down fa-2x red"></i> {{value.difference}}$</p>
+                                        {% else %}
+                                            <p class="change"><i class="fas fa-equals fa-2x blue"></i> {{value.difference}}$</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
+
+                    {% endfor %}
                     
                    
                    
