@@ -109,7 +109,7 @@ def get_last_transactions():
 
     context['linechart'] = linechart
     context['current'] = current_data
-
+    print('max length is, ', max_length)
     context['linechart_labels'] = list(range(1, max_length+1))
 
     print(context)
