@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: aqua;
+}
+
+nav {
+    background-color: #fff;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    transition: width linear .5s;
+    width: 0;
+}
+
+nav.active {
+    width: 30%;
+}
+
+
+.nav-list {
+    list-style: none;
+    justify-content: space-between;
+    padding: 1rem;
+    display: flex;
+}
+
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.nav-item {
+    opacity: 0;
+    transition: all linear .5s;
+}
+.nav-item.active {
+    opacity: 1;
+    transform: rotateY(360deg);
+}
+
+.btn {
+    position: relative;
+    margin-right: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 1.5rem;
+}
+
+.btn::before,
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #555;  
+    right: 50%;
+    transition: transform linear .5s;
+}
+
+.btn::before { 
+    transform: rotate(0deg) translateX(50%);
+    top: 40%;
+}
+
+.btn::after {
+    transform: rotate(0deg) translateX(50%);
+    top: 60%;
+}
+
+.btn.active::before {transform: rotate(-225deg) translate(-4px,-10px)}
+.btn.active::after {transform: rotate(225deg) translate(-3px,10px)}

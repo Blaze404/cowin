@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Vaccine Notification</title>
+    <title>Agent Helper</title>
 
-        {% load static %}
+    {% load static %}
 
     <link rel="apple-touch-icon" sizes="57x57" href="{% static 'icon/apple-icon-57x57.png' %}">
     <link rel="apple-touch-icon" sizes="60x60" href="{% static 'icon/apple-icon-60x60.png' %}">
@@ -54,64 +54,55 @@
 
 <!-- END GOOGLE ANALYTICS -->
 
+<!--  -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="{% static 'jquery-ui/jquery-ui.css' %}">
-    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://kit.fontawesome.com/8d26d665dc.js" crossorigin="anonymous"></script>
-
-
-    <link rel="stylesheet" href="{% static 'index.css' %}">
-    <script src="{% static 'index.js' %}"></script>
-
+<link rel="stylesheet" href="{% static 'index22.css' %}">
+    
 </head>
 <body>
-  <h1>Check for Vaccine</h1>
+<nav id="nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">Stats</a></li>
+            <li class="nav-item"><a href="/stat/add" class="nav-link">Add</a></li>
+            <li class="nav-item"><a href="/stat/agent" class="nav-link">Add Agent</a></li>
+            <!-- <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> -->
+        </ul>
+    </nav>
+    <div class="btn"></div>
 
-  <form method="POST" action="/getVaccine/">
-    <label>
-      
-      <input required id="fname" name="pincode" type="text" placeholder="Pincode">
-      <span>Your Area's Pincode</span>
-    </label>
-      {% csrf_token %}
-    <input type="submit" value="Send">
-  </form>
 
-  
-<div id="dialog" title="Please choose language">
-      <a id="enlgish" class="btn btn-primary" href="#" > Continue in English </a> <br> <br>
-      <a href="/m" class="btn btn-primary" >मराठी</a> &nbsp;&nbsp;&nbsp;
-      <a href="/h" class="btn btn-primary">हिंदी </a> <br>
-  </div>
 
-  <div id="footer">
-    Made with <i class="fas fa-anchor"></i> by blaze
-  </div>
-  
-  <script>
-      $( function() {
-        $( "#dialog" ).dialog();
-      } );
+    <script>
+    const btn = document.querySelector(".btn");
+            const nav = document.getElementById("nav");
+            const navItem = document.querySelectorAll(".nav-item");
 
-      $(document).ready(function(){
-        $('#enlgish').click(function(e){
-          e.preventDefault();
-          console.log('print');
-          $( "#dialog" ).dialog('close');
-        });
-      })
-  </script>
+            btn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            navItem.forEach((item) => {
+                item.classList.toggle("active")
+            })
+            btn.classList.toggle("active")
+            });
 
+    
+
+            {% if agent_add %}
+            toastr.success('Success!', 'Agent Added successfully');
+            {% endif %}
+
+            {% if transaction_add %}
+            toastr.success('Success!', 'Transaction Added successfully');
+            {% endif %}
+
+
+
+    </script>
 </body>
 </html>
