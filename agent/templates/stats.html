@@ -133,6 +133,15 @@
         datasets: [dataFirst, dataSecond]
         };
 
+        var speedDataTemp = {
+        labels: {{linechart_labels}},
+        datasets: [
+        {% for key, value in linechart.items %}
+            data{{forloop.counter}},
+        {% endfor %}
+        ]
+        };
+
         var chartOptions = {
         legend: {
             display: true,
