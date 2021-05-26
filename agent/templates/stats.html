@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8d26d665dc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type='text/css' href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="{% static 'stats.css' %}">
+</head>
+<body> 
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                    <canvas id="speedChart" ></canvas>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                        <canvas id="speedChartDaily" ></canvas>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+    </div>
+
+   
+    
+    <div class="container">
+               <!-- Topic Cards -->
+    <div id="cards_landscape_wrap-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <a href="">
+                            <div class="card-flyer">
+                                <div class="text-box">
+                                    <div class="image-box">
+                                        <!-- <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" /> -->
+                                    </div>
+                                    <div class="text-container">
+                                        <h6>Agent 01</h6>
+                                        <p>Invested Money: 5$</p>
+                                        <p>Current Money: 5.1$</p>
+                                        <p class="change"><i class="fas fa-arrow-down fa-2x red"></i> 0.1$</p>
+                                        <p class="change"><i class="fas fa-equals fa-2x blue"></i> 0.1$</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                   
+                   
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+            
+        
+          
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.esm.js" integrity="sha512-9EvJc4hnoFfX+ZDIHZuXNoVXpcw+VlOtw9YqUEDXiAT98L89mNCR2CkZLW9jU7tiHxSf6Q2ocI2yAEL5bsaiUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/helpers.esm.js" integrity="sha512-O+kSVetiC3BNzWDMNhKVfsrDJQWDr0U88/pxcz/Py/quIPVxIPCGG/xDRY+EMPhB4FwOHrAOOIvua0LiOlCq2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+        <script>
+
+            // Last 15 transactions
+        var speedCanvas = document.getElementById("speedChart");
+
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var dataFirst = {
+            label: "Car A - Speed (mph)",
+            data: [0, 59, 75, 20, 20, 55, 40, 0, 59, 75, 20, 20, 55, 40],
+            lineTension: 0,
+            fill: false,
+            borderColor: 'red'
+        };
+
+        var dataSecond = {
+            label: "Car B - Speed (mph)",
+            data: [20, 15, 60, 60, 65, 30, 70, 0, 59, 75, 20, 20, 55, 40],
+            lineTension: 0,
+            fill: false,
+        borderColor: 'blue'
+        };
+
+        var speedData = {
+        labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s", "0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+        datasets: [dataFirst, dataSecond]
+        };
+
+        var chartOptions = {
+        legend: {
+            display: true,
+            position: 'top',
+            labels: {
+            boxWidth: 40,
+            fontColor: 'black',
+            fontSize: 15
+            }
+        }
+        };
+
+        var lineChart = new Chart(speedCanvas, {
+        type: 'line',
+        data: speedData,
+        options: chartOptions
+        });
+
+
+        // daily
+        var speedCanvasDaily = document.getElementById("speedChartDaily");
+
+        var lineChart = new Chart(speedCanvasDaily, {
+        type: 'line',
+        data: speedData,
+        options: chartOptions
+        });
+
+
+        </script>
+</body>
+</html>

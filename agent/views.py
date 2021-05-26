@@ -35,3 +35,8 @@ def add_agent(request):
 def show_all(request):
     context = F.get_all_data()
     return render(request, 'showagents.html', context)
+
+
+def stats(request):
+    context = F.get_last_transactions()
+    return render(request, 'stats.html', context)
