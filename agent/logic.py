@@ -95,8 +95,8 @@ def get_last_transactions():
     ## give padding to amounts
     max_length = 0
     for l in linechart.values():
-        if len(l) > max_length:
-            max_length = len(l)
+        if len(l.amounts) > max_length:
+            max_length = len(l.amounts)
 
     for agent in linechart:
         if len(linechart[agent]) < max_length:
