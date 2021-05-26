@@ -79,7 +79,7 @@
 
 <script>
 
-    var availableTags = {{ all_agents }};
+    var availableTags = {{ all_agents|safe  }};
 
 
 function appendUserRow(id, user) {

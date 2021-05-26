@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from . import logic as F
+import json
 
 
 # Create your views here.
@@ -11,7 +12,7 @@ def index(request):
 
 def add(request):
     if request.method == 'GET':
-        all_agents = list(F.get_unique_agents())
+        all_agents = json.dumps(list(F.get_unique_agents()))    
         print('sending list: ', all_agents)
         return render(request, 'transactions.html', {'all_agents': all_agents})
     if request.method == 'POST':
