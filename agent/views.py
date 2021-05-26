@@ -11,7 +11,7 @@ def index(request):
 
 def add(request):
     if request.method == 'GET':
-        all_agents = F.get_unique_agents()
+        all_agents = list(F.get_unique_agents())
         return render(request, 'transactions.html', {'all_agents': all_agents})
     if request.method == 'POST':
         print(request.POST)
