@@ -67,10 +67,11 @@ def get_all_transactions():
 
 def get_last_transactions():
     agents = Agent.objects.all()
-
+    colors = ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#50c878']
     context = {}
     linechart = {}
     current_data = {}
+    i = 0
     for agent in agents:
         # name = agent[0]
         ## add current data
@@ -86,8 +87,11 @@ def get_last_transactions():
         for transaction in transactions:
             amounts.append(transaction.agent_current_value)
         amounts.reverse()
-        linechart[agent.agent_name] = amounts
-
+        linechart[agent.agent_name] = {
+            'amounts': amounts,
+            'color': colors[i]
+        }
+        i += 1
     ## give padding to amounts
     max_length = 0
     for l in linechart.values():

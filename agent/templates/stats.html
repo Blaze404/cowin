@@ -104,10 +104,10 @@
 
             var data{{forloop.counter}} = {
                     label: "{{key}}",
-                    data: {{value}},
+                    data: {{value.amounts}},
                     lineTension: 0,
                     fill: false,
-                    borderColor: 'red'
+                    borderColor: '{{value.color}}'
                 };
 
         {% endfor %}
