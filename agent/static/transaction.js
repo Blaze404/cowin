@@ -1,4 +1,4 @@
-var availableTags = {{all_agents|tojson}};
+
 function appendUserRow(id, user) {
     var html = "<div id=\"opt-row." + id + "\" class=\"form-group row \">\n" +
         "            <div class=\"col-4 ui-widget\">\n" +

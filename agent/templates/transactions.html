@@ -77,6 +77,11 @@
 
 <a href="/stat/" class="btn btn-primary">Home</a>
 
+<script>
+
+    var availableTags = {{ all_agents|tojson }};
+</script>
+
 <script src="{% static 'transaction.js' %}"></script>
 
 </body>
