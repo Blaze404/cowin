@@ -30,3 +30,8 @@ def add_agent(request):
         # print(request.POST)
         F.add_agent(request)
         return render(request, 'index22.html', {'agent_add': True})
+
+
+def show_all(request):
+    context = F.get_all_data()
+    return render(request, 'showagents.html', context)

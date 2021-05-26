@@ -40,3 +40,14 @@ def get_unique_agents():
     for agent in Agent.objects.order_by().values_list('agent_name').distinct():
         agents.append(agent[0])
     return agents
+
+
+def get_all_data():
+    all_agents = Agent.objects.all()
+    all_transations = Transactions.objects.all()
+    return {'agents': all_agents, 'transactions': all_transations }
+
+
+def get_all_transactions():
+    all = Transactions.objects.all()
+    return {'data': all}

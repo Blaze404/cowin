@@ -13,5 +13,61 @@
 </head>
 <body>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Agents</h3>
+
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Current Value</th>
+              <th scope="col">Inital Investment</th>
+              <th scope="col">Safety</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for agent in agents %}
+            <tr>
+              <th scope="row"> {{agent.agent_name}}  </th>
+              <td> {{agent.agent_current_value}} </td>
+              <td>{{agent.agent_investment}}</td>
+              <td>{{agent.safety}}</td>
+            </tr>
+            {% endfor %}            
+          </tbody>
+        </table>
+
+    </div>
+
+    <div class="col-xs-6">
+      <h3>Transactions</h3>
+
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Agent</th>
+              <th scope="col">Value</th>
+              <th scope="col">Time</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for transaction in transactions %}
+            <tr>
+              <th scope="row"> {{transaction.agent_name}}  </th>
+              <td> {{transaction.agent_current_value}} </td>
+              <td>{{transaction.timestamp}}</td>
+
+            </tr>
+            {% endfor %}            
+          </tbody>
+        </table>
+
+      </div>
+  </div>
+</div>
+
 </body>
 </html>
