@@ -12,7 +12,7 @@ def index(request):
 
 def add(request):
     if request.method == 'GET':
-        all_agents = json.dumps(list(F.get_unique_agents()))    
+        all_agents = json.dumps(F.get_unique_agents())
         print('sending list: ', all_agents)
         return render(request, 'transactions.html', {'all_agents': all_agents})
     if request.method == 'POST':

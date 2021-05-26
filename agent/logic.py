@@ -36,4 +36,7 @@ def add_transaction(request):
 
 
 def get_unique_agents():
-    return Agent.objects.order_by().values_list('agent_name').distinct()
+    agents = []
+    for agent in Agent.objects.order_by().values_list('agent_name').distinct():
+        agents.append(agent)
+    return agents
