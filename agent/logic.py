@@ -71,7 +71,7 @@ def get_last_transactions():
     context = {}
 
     for agent in agents:
-        name = agent[0]
+        # name = agent[0]
         transactions = Transactions.objects.filter(agent_name=agent.agent_name).order_by('-timestamp')
         if len(transactions) > LAST_N:
             transactions = transactions[:LAST_N]
