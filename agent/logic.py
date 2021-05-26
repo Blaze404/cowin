@@ -100,11 +100,11 @@ def get_last_transactions():
             max_length = len(l['amounts'])
 
     for agent in linechart:
-        if len(linechart[agent]) < max_length:
-            padding_length = max_length - len(linechart[agent])
+        if len(linechart[agent]['amounts']) < max_length:
+            padding_length = max_length - len(linechart[agent]['amounts'])
             temp = [0] * padding_length
-            temp.extend(linechart[agent])
-            linechart[agent] = temp
+            temp.extend(linechart[agent]['amounts'])
+            linechart[agent]['amounts'] = temp
 
     # print(linechart)
 
