@@ -128,12 +128,12 @@
         borderColor: 'blue'
         };
 
-        var speedData = {
+        var speedDataOld = {
         labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s", "0s", "10s", "20s", "30s", "40s", "50s", "60s"],
         datasets: [dataFirst, dataSecond]
         };
 
-        var speedDataTemp = {
+        var speedData = {
         labels: {{linechart_labels}},
         datasets: [
         {% for key, value in linechart.items %}
