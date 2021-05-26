@@ -1,5 +1,5 @@
 from .models import Agent, Transactions
-
+import json
 
 ## HYPER PARAMETERS
 LAST_N = 15
@@ -77,7 +77,7 @@ def get_last_transactions():
         current_data[agent.agent_name] = {
             'initial_value': agent.agent_investment,
             'current_value': agent.agent_current_value,
-            'difference': agent.agent_current_value - agent.agent_investment
+            'difference': round(agent.agent_current_value - agent.agent_investment, 2)
         }
         transactions = Transactions.objects.filter(agent_name=agent.agent_name).order_by('-timestamp')
         if len(transactions) > LAST_N:
@@ -86,7 +86,7 @@ def get_last_transactions():
         for transaction in transactions:
             amounts.append(transaction.agent_current_value)
         amounts.reverse()
-        linechart[agent.agent_name] = amounts
+        linechart[agent.agent_name] = json.dumps(amounts)
 
     ## give padding to amounts
     max_length = 0
@@ -105,6 +105,8 @@ def get_last_transactions():
 
     context['linechart'] = linechart
     context['current'] = current_data
+
+    context['linechart_labels'] = list(range(1, max_length+1))
 
     print(context)
 

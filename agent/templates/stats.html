@@ -60,7 +60,7 @@
                                     <div class="text-container">
                                         <h6>{{key}}</h6>
                                         <p>Invested Money: {{value.initial_value}}$</p>
-                                        <p>Current Money: {{current_value.current_value}}$</p>
+                                        <p>Current Money: {{value.current_value}}$</p>
                                         {% if value.difference > 0 %}
                                             <p class="change"><i class="fas fa-arrow-up fa-2x green"></i> {{value.difference}}$</p>
                                         {% elif value.difference < 0 %}
@@ -100,8 +100,20 @@
         Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontSize = 18;
 
+        {% for key, value in linechart.items %}
+
+            var data{{forloop.counter}} = {
+                    label: "{{key}}",
+                    data: {{value}},
+                    lineTension: 0,
+                    fill: false,
+                    borderColor: 'red'
+                };
+
+        {% endfor %}
+
         var dataFirst = {
-            label: "Car A - Speed (mph)",
+            label: "Agent 1",
             data: [0, 59, 75, 20, 20, 55, 40, 0, 59, 75, 20, 20, 55, 40],
             lineTension: 0,
             fill: false,
@@ -109,7 +121,7 @@
         };
 
         var dataSecond = {
-            label: "Car B - Speed (mph)",
+            label: "Agent 2",
             data: [20, 15, 60, 60, 65, 30, 70, 0, 59, 75, 20, 20, 55, 40],
             lineTension: 0,
             fill: false,
